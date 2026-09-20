@@ -5,83 +5,82 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Absensi Kelas VIII A - SMPN 1 Tanah Sepenggal</title>
   
-  <!-- Fallback Redirect Meta Tag dengan Parameter Fix Multi-Login /u/0/ -->
-  <meta http-equiv="refresh" content="0; url=https://script.google.com/macros/u/0/s/AKfycbypeDjApijFEKpR791h7PqQsaS9E71gJCgDP4EQDX-o3pBe2HGBl6qYxIJtTTEGmjcQnQ/exec">
-
   <style>
     * { box-sizing: border-box; }
     body {
-      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
       display: flex;
       justify-content: center;
       align-items: center;
       min-height: 100vh;
       margin: 0;
-      background-color: #f8f9fa;
+      background-color: #f4f6f9;
       color: #333;
     }
-    .container {
-      background: #ffffff;
-      padding: 30px 25px;
+    .card {
+      background: white;
+      padding: 30px 20px;
       border-radius: 16px;
-      box-shadow: 0 10px 25px rgba(0,0,0,0.08);
+      box-shadow: 0 4px 20px rgba(0,0,0,0.08);
       text-align: center;
-      max-width: 400px;
+      max-width: 380px;
       width: 90%;
     }
     .spinner {
-      border: 3px solid #e9ecef;
-      border-top: 3px solid #0d6efd;
+      border: 4px solid #e9ecef;
+      border-top: 4px solid #0d6efd;
       border-radius: 50%;
-      width: 42px;
-      height: 42px;
+      width: 40px;
+      height: 40px;
       animation: spin 0.8s linear infinite;
       margin: 20px auto;
     }
-    @keyframes spin {
-      0% { transform: rotate(0deg); }
-      100% { transform: rotate(360deg); }
-    }
-    h2 { font-size: 1.25rem; margin-bottom: 8px; color: #212529; }
-    p { font-size: 0.9rem; color: #6c757d; margin: 5px 0; }
-    a.btn-link {
-      display: inline-block;
-      margin-top: 15px;
-      padding: 10px 20px;
-      color: #ffffff;
+    @keyframes spin { 0% { transform: rotate(0deg); } 100% { transform: rotate(360deg); } }
+    .btn {
+      display: block;
+      width: 100%;
+      padding: 12px;
       background-color: #0d6efd;
-      border-radius: 8px;
-      font-weight: 600;
+      color: white;
       text-decoration: none;
-      font-size: 0.9rem;
+      font-weight: bold;
+      border-radius: 8px;
+      margin-top: 15px;
     }
   </style>
 </head>
 <body>
 
-  <div class="container">
-    <h2>Menghubungkan ke Absensi VIII A</h2>
+  <div class="card">
+    <h3 style="margin-top:0;">Absensi Kelas VIII A</h3>
+    <p style="font-size:14px; color:#6c757d;">SMPN 1 Tanah Sepenggal</p>
     <div class="spinner"></div>
-    <p>Mohon tunggu sebentar...</p>
-    <a id="directLink" href="https://script.google.com/macros/u/0/s/AKfycbypeDjApijFEKpR791h7PqQsaS9E71gJCgDP4EQDX-o3pBe2HGBl6qYxIJtTTEGmjcQnQ/exec" class="btn-link">Klik Di Sini Jika Tidak Terbuka</a>
+    <p id="statusTxt" style="font-size:13px;">Sedang membuka form absensi...</p>
+    <a id="manualBtn" href="https://script.google.com/macros/s/AKfycbxd1U3KXtwnx5htCKLGUgYw_Tl4vqDKuwvdH8I6JUA6C2mkT_wN-GUJLHsnU3g7UlJGIw/exec" class="btn" style="display:none;">KLIK DI SINI UNTUK ABSEN</a>
   </div>
 
   <script>
-    // URL Target dengan Bantuan Parameter Bypass Multi-Account Google
-    var targetURL = "https://script.google.com/macros/u/0/s/AKfycbypeDjApijFEKpR791h7PqQsaS9E71gJCgDP4EQDX-o3pBe2HGBl6qYxIJtTTEGmjcQnQ/exec";
+    // Link Apps Script Resmi Anda
+    var targetURL = "https://script.google.com/macros/s/AKfycbxd1U3KXtwnx5htCKLGUgYw_Tl4vqDKuwvdH8I6JUA6C2mkT_wN-GUJLHsnU3g7UlJGIw/exec";
 
-    // Eksekusi Redirect Otomatis Tingkat Atas (Top Window)
-    (function() {
-      try {
-        if (window.top !== window.self) {
-          window.top.location.replace(targetURL);
-        } else {
-          window.location.replace(targetURL);
-        }
-      } catch (e) {
-        window.location.href = targetURL;
-      }
-    })();
+    // Menambahkan parameter bypass akun untuk menghindari error "unable to open the file"
+    var finalURL = targetURL + "?authuser=0";
+
+    function doRedirect() {
+      // Mengalihkan secara penuh tanpa iframe/embed
+      window.location.href = finalURL;
+    }
+
+    // Jalankan pengalihan otomatis
+    setTimeout(doRedirect, 200);
+
+    // Tampilkan tombol cadangan jika HP memblokir redirect
+    setTimeout(function() {
+      document.getElementById('statusTxt').innerText = "Jika halaman tidak otomatis terbuka dalam 3 detik:";
+      var btn = document.getElementById('manualBtn');
+      btn.href = finalURL;
+      btn.style.display = "block";
+    }, 2000);
   </script>
 
 </body>
